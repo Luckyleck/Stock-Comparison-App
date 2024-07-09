@@ -32,7 +32,7 @@ function Stock() {
             {stockData && (
                 <div>
                     <h2>{stockData.symbol}</h2>
-                    <p>Price: ${stockData.results[0].c}</p>
+                    {stockData.results && <p>Price: ${stockData.results[0].c}</p>}
                 </div>
             )}
         </div>
