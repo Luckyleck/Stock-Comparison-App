@@ -1,4 +1,6 @@
+// eslint-disable-next-line no-undef
 const API_KEY = process.env.REACT_APP_POLYGON_API_KEY;
+// eslint-disable-next-line no-undef
 const POLYGON_URL = process.env.REACT_APP_POLYGON_URL;
 
 export const fetchStockData = async (ticker) => {
