@@ -3,6 +3,7 @@ import './stock.css';
 import PropTypes from 'prop-types';
 
 const Stock = ({ stockOneData, stockTwoData }) => {
+    console.log(stockOneData, stockTwoData)
     const renderStockDetails = (stockData) => {
         if (!stockData) {
             return <p>No data available.</p>;
@@ -38,11 +39,14 @@ const Stock = ({ stockOneData, stockTwoData }) => {
 
     return (
         <div className="stock-container">
-            <div className="stock-column">
-                {renderStockDetails(stockOneData)}
-            </div>
-            <div className="stock-column">
-                {renderStockDetails(stockTwoData)}
+            <h1>Date Range: {stockOneData?.from} to {stockOneData?.to}</h1>
+            <div className="stock-info" style={{display: 'flex', width: '100%'}}>
+                <div className="stock-column">
+                    {renderStockDetails(stockOneData)}
+                </div>
+                <div className="stock-column">
+                    {renderStockDetails(stockTwoData)}
+                </div>
             </div>
         </div>
     );

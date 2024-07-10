@@ -23,13 +23,17 @@ const POLYGON_URL = process.env.REACT_APP_POLYGON_URL;
 //     return data;
 // };
 
-export const fetchStockData = async (
-    ticker,
-    multiplier,
-    timespan,
-    from,
-    to
-) => {
+export const fetchStockData = async (ticker) => {
+    const multiplier = 1;
+    const timespan = 'month';
+    
+    const toDate = new Date();
+    const fromDate = new Date();
+    fromDate.setFullYear(toDate.getFullYear() - 1);
+
+    const to = toDate.toISOString().split('T')[0];
+    const from = fromDate.toISOString().split('T')[0];
+
     const response = await fetch(
         `${POLYGON_URL}/v2/aggs/ticker/${ticker}/range/${multiplier}/${timespan}/${from}/${to}?adjusted=true&sort=asc&apiKey=${API_KEY}`
     );
@@ -38,6 +42,8 @@ export const fetchStockData = async (
         throw new Error('Failed to fetch stock data');
     }
     const data = await response.json();
+    data['to'] = to
+    data['from'] = from
     console.log(data)
     return data;
 };
