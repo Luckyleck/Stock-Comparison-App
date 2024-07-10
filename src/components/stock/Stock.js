@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState, useEffect } from 'react';
 import { fetchStockData } from './StockFetch.js';
 
@@ -32,7 +33,9 @@ function Stock() {
             {stockData && (
                 <div>
                     <h2>{stockData.symbol}</h2>
-                    {stockData.results && <p>Price: ${stockData.results[0].c}</p>}
+                    {stockData.results && (
+                        <p>Price: ${stockData.results[0].c}</p>
+                    )}
                 </div>
             )}
         </div>
