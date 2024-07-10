@@ -1,0 +1,40 @@
+button {
+    height: 40px;
+    font-size: 1.5em; /* Match button text size */
+    padding: 5px 10px;
+    margin: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f0f0f0;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #e0e0e0;
+}
+
+.stock-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 50%;
+    margin: 20px auto;
+}
+
+.stock-column {
+    flex: 1;
+    margin: 10px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.stock-column h2 {
+    margin-top: 0;
+}
+
+.stock-column p {
+    margin: 5px 0;
+}

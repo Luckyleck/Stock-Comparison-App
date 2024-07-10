@@ -1,45 +1,56 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
-import { fetchStockData } from './StockFetch.js';
+import './stock.css';
+import PropTypes from 'prop-types';
 
-function Stock() {
-    const [ticker, setTicker] = useState('GOOG');
-    const [stockData, setStockData] = useState(null);
-    const [error, setError] = useState(null);
+const Stock = ({ stockOneData, stockTwoData }) => {
+    const renderStockDetails = (stockData) => {
+        if (!stockData) {
+            return <p>No data available.</p>;
+        }
 
-    useEffect(() => {
-        const getData = async () => {
-            try {
-                const data = await fetchStockData(ticker);
-                setStockData(data);
-                setError(null);
-            } catch (err) {
-                setError(err.message);
-            }
-        };
+        const {
+            c, // The close price for the symbol in the given time period.
+            h, // The highest price for the symbol in the given time period.
+            l, // The lowest price for the symbol in the given time period.
+            n, // The number of transactions in the aggregate window.
+            o, // The open price for the symbol in the given time period.
+            t, // The Unix Msec timestamp for the start of the aggregate window.
+            v, // The trading volume of the symbol in the given time period.
+            vw, // The volume weighted average price.
+            otc, // Whether or not this aggregate is for an OTC ticker. This field will be left off if false.
+        } = stockData.results[0];
 
-        getData();
-    }, [ticker]);
+        return (
+            <div>
+                <h2>{stockData.ticker}</h2>
+                <p>Close Price: {c}</p>
+                <p>Highest Price: {h}</p>
+                <p>Lowest Price: {l}</p>
+                <p>Number of Transactions: {n}</p>
+                <p>Open Price: {o}</p>
+                <p>Volume: {v}</p>
+                <p>Volume Weighted Average Price: {vw}</p>
+                {otc && <p>OTC Ticker</p>}
+                <p>Timestamp: {new Date(t).toLocaleString()}</p>
+            </div>
+        );
+    };
 
     return (
-        <div className="App">
-            <h1>Stock Data</h1>
-            <input
-                type="text"
-                value={ticker}
-                onChange={(e) => setTicker(e.target.value.toUpperCase())}
-            />
-            {error && <p>{error}</p>}
-            {stockData && (
-                <div>
-                    <h2>{stockData.symbol}</h2>
-                    {stockData.results && (
-                        <p>Price: ${stockData.results[0].c}</p>
-                    )}
-                </div>
-            )}
+        <div className="stock-container">
+            <div className="stock-column">
+                {renderStockDetails(stockOneData)}
+            </div>
+            <div className="stock-column">
+                {renderStockDetails(stockTwoData)}
+            </div>
         </div>
     );
-}
+};
+
+Stock.propTypes = {
+    stockOneData: PropTypes.object,
+    stockTwoData: PropTypes.object,
+};
 
 export default Stock;
