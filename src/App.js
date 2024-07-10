@@ -17,9 +17,9 @@ function App() {
 
     const handleCompare = async () => {
         try {
-            const dataOne = await fetchStockData(stockOne, multiplier, timespan, fromDate, toDate);
+            const dataOne = await fetchStockData(stockOne.toUpperCase(), multiplier, timespan, fromDate, toDate);
             setStockOneData(dataOne);
-            const dataTwo = await fetchStockData(stockTwo, multiplier, timespan, fromDate, toDate);
+            const dataTwo = await fetchStockData(stockTwo.toUpperCase(), multiplier, timespan, fromDate, toDate);
             setStockTwoData(dataTwo);
         } catch (error) {
             console.error('Error fetching stock data:', error);
