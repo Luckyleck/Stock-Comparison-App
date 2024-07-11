@@ -1,0 +1,16 @@
+.chart-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 50%;
+    margin: 20px auto;
+}
+
+.chart {
+    width: 100%
+}
+
+.chart h3 {
+    margin: 0 10px;
+}

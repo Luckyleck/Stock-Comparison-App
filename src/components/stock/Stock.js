@@ -3,7 +3,6 @@ import './stock.css';
 import PropTypes from 'prop-types';
 
 const Stock = ({ stockOneData, stockTwoData }) => {
-    console.log(stockOneData, stockTwoData)
     const renderStockDetails = (stockData) => {
         if (!stockData) {
             return <p>No data available.</p>;
