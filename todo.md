@@ -1,0 +1,2 @@
+- get rechart package
+- render data

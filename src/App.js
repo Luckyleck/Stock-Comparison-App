@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Stock from './components/stock/Stock';
 import ChatGPT from './components/ChatGPT/ChatGPT';
 import { fetchStockData } from './components/stock/StockFetch';
+import Chart from './components/Chart/Chart';
 
 function App() {
     const [stockOne, setStockOne] = useState('');
@@ -39,6 +40,7 @@ function App() {
             <button onClick={handleCompare}>Compare</button>
             <Stock stockOneData={stockOneData} stockTwoData={stockTwoData} />
             <ChatGPT />
+            <Chart stockOneData={stockOneData} stockTwoData={stockTwoData} />
         </div>
     );
 }
