@@ -12,7 +12,8 @@ const ChatGPT = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const prompt = input;
+        // const prompt = input;
+        const prompt = `I'm a risk averse investor with long term investment goals. What stock to invest GOOG or AAPL?`;
 
         try {
             const result = await fetch(
