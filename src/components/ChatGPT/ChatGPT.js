@@ -1,61 +1,51 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 const ChatGPT_API_KEY = process.env.REACT_APP_ChatGPT_API_KEY;
 
-const ChatGPT = () => {
-    const [input, setInput] = useState('');
+export const ChatGPT = ({ stockOneTicker, stockTwoTicker }) => {
     const [response, setResponse] = useState('');
 
-    const handleInputChange = (e) => {
-        setInput(e.target.value);
-    };
+    useEffect(() => {
+        const fetchChatGPTResponse  = async () => {
+            const prompt = `I'm a risk averse investor with long term investment goals. 
+                            What stock to invest 
+                            ${stockOneTicker} or ${stockTwoTicker}?`;
+            
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-
-        // const prompt = input;
-        const prompt = `I'm a risk averse investor with long term investment goals. What stock to invest GOOG or AAPL?`;
-
-        try {
-            const result = await fetch(
-                'https://api.openai.com/v1/chat/completions',
-                {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        Authorization: `Bearer  ${ChatGPT_API_KEY}`,
-                    },
-                    body: JSON.stringify({
-                        model: 'gpt-3.5-turbo',
-                        messages: [{ role: 'user', content: prompt }],
-                    }),
-                }
-            );
-
-            const data = await result.json();
-            setResponse(data.choices[0].message.content);
-        } catch (error) {
-            console.error('Error fetching data from OpenAI API:', error);
+            try {
+                const result = await fetch(
+                    'https://api.openai.com/v1/chat/completions',
+                    {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            Authorization: `Bearer  ${ChatGPT_API_KEY}`,
+                        },
+                        body: JSON.stringify({
+                            model: 'gpt-3.5-turbo',
+                            messages: [{ role: 'user', content: prompt }],
+                        }),
+                    }
+                );
+        
+                const data = await result.json();
+                setResponse(data.choices[0].message.content)
+            } catch (error) {
+                console.error('Error fetching data from OpenAI API:', error);
+            }
         }
-    };
+        if (stockOneTicker && stockTwoTicker) {
+            fetchChatGPTResponse();
+        }
+
+    }, [stockOneTicker, stockTwoTicker])
 
     return (
         <div>
-            <h1>Chat with GPT</h1>
-            <form onSubmit={handleSubmit}>
-                <input
-                    type="text"
-                    value={input}
-                    onChange={handleInputChange}
-                    placeholder="Ask me anything..."
-                />
-                <button type="submit">Send</button>
-            </form>
-            <div>
-                <h2>Response:</h2>
-                <p>{response}</p>
-            </div>
+            <h2>ChatGPT Response:</h2>
+            <p>{response}</p>
         </div>
     );
+
 };
 
 export default ChatGPT;

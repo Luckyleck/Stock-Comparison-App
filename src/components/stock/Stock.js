@@ -35,6 +35,7 @@ const Stock = ({ stockOneData, stockTwoData }) => {
             </div>
         );
     };
+    // console.log(stockOneData)
 
     return (
         <div className="stock-container">
