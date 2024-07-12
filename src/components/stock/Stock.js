@@ -39,8 +39,13 @@ const Stock = ({ stockOneData, stockTwoData }) => {
 
     return (
         <div className="stock-container">
-            <h1>Date Range: {stockOneData?.from} to {stockOneData?.to}</h1>
-            <div className="stock-info" style={{display: 'flex', width: '100%'}}>
+            <h1>
+                Date Range: {stockOneData?.from} to {stockOneData?.to}
+            </h1>
+            <div
+                className="stock-info"
+                style={{ display: 'flex', width: '100%' }}
+            >
                 <div className="stock-column">
                     {renderStockDetails(stockOneData)}
                 </div>

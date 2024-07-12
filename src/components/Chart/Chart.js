@@ -1,13 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import {
+    LineChart,
+    Line,
+    XAxis,
+    YAxis,
+    CartesianGrid,
+    Tooltip,
+    ResponsiveContainer,
+} from 'recharts';
 import './chart.css';
 
 function formatData(data) {
     if (!data || !data.results) return [];
-    return data.results.map(item => ({
+    return data.results.map((item) => ({
         date: new Date(item.t).toLocaleDateString('en-US', { month: 'short' }),
-        close: item.c
+        close: item.c,
     }));
 }
 
@@ -25,7 +33,11 @@ export default function Chart({ stockOneData, stockTwoData }) {
                         <XAxis dataKey="date" />
                         <YAxis domain={['auto', 'auto']} />
                         <Tooltip />
-                        <Line type="monotone" dataKey="close" stroke="#ff7300" />
+                        <Line
+                            type="monotone"
+                            dataKey="close"
+                            stroke="#ff7300"
+                        />
                     </LineChart>
                 </ResponsiveContainer>
             </div>
@@ -37,7 +49,11 @@ export default function Chart({ stockOneData, stockTwoData }) {
                         <XAxis dataKey="date" />
                         <YAxis domain={['auto', 'auto']} />
                         <Tooltip />
-                        <Line type="monotone" dataKey="close" stroke="#387908" />
+                        <Line
+                            type="monotone"
+                            dataKey="close"
+                            stroke="#387908"
+                        />
                     </LineChart>
                 </ResponsiveContainer>
             </div>
