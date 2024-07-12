@@ -47,7 +47,7 @@ function App() {
                 />
             </div>
             <button onClick={handleCompare}>Compare</button>
-            <ChatGPT responseGPT={responseGPT} />
+
             <Stock stockOneData={stockOneData} stockTwoData={stockTwoData} />
             <Chart stockOneData={stockOneData} stockTwoData={stockTwoData} />
         </div>
