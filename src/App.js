@@ -2,7 +2,8 @@ import './App.css';
 import React from 'react';
 import { useState } from 'react';
 import Stock from './components/stock/Stock';
-import ChatGPT from './components/ChatGPT/ChatGPT';
+// import ChatGPT from './components/ChatGPT/oldChatGPT';
+import { ChatGPT } from './components/ChatGPT/ChatGPT';
 import { fetchStockData } from './components/stock/StockFetch';
 import Chart from './components/Chart/Chart';
 
@@ -38,8 +39,10 @@ function App() {
                 />
             </div>
             <button onClick={handleCompare}>Compare</button>
+            {stockOneData && stockTwoData &&
+                <ChatGPT stockOneTicker={stockOneData.ticker} stockTwoTicker={stockTwoData.ticker} />
+            }
             <Stock stockOneData={stockOneData} stockTwoData={stockTwoData} />
-            <ChatGPT />
             <Chart stockOneData={stockOneData} stockTwoData={stockTwoData} />
         </div>
     );
