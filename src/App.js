@@ -25,8 +25,31 @@ function App() {
     };
 
     return (
-        <div className="main">
-            <div className="stockInputs">
+        <div className="main-container">
+            <div className="content">
+                <div className="left-panel">
+                    <h1 id="title">.stock-comparison</h1>
+                    <div className="stock-inputs">
+                        <input
+                            placeholder="Stock 1"
+                            value={stockOne}
+                            onChange={(e) => setStockOne(e.target.value)}
+                        />
+                        <input
+                            placeholder="Stock 2"
+                            value={stockTwo}
+                            onChange={(e) => setStockTwo(e.target.value)}
+                        />
+                        <input
+                            placeholder="Investment Style"
+                            value={stockTwo}
+                            onChange={(e) => setStockTwo(e.target.value)}
+                        />
+                    </div>
+                </div>
+            </div>
+
+            {/* <div className="stockInputs">
                 <input
                     placeholder="Stock 1"
                     value={stockOne}
@@ -46,7 +69,7 @@ function App() {
                 />
             )}
             <Stock stockOneData={stockOneData} stockTwoData={stockTwoData} />
-            <Chart stockOneData={stockOneData} stockTwoData={stockTwoData} />
+            <Chart stockOneData={stockOneData} stockTwoData={stockTwoData} /> */}
         </div>
     );
 }

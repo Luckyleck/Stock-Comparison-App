@@ -1,4 +1,4 @@
-.main {
+/* .main {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,4 +14,57 @@ input, select {
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
+} */
+
+.main-container {
+  background: linear-gradient(to bottom, #e0f7fa, #8ea9a9); /* Teal to light color gradient */
+  min-height: 100vh; /* Ensure it takes up full height */
+  overflow-y: auto; /* Enable vertical scrolling */
 }
+
+#title {
+  font-size: 8em;
+  font-family: 'Rubik';
+  align-self: center
+
+}
+
+.content {
+  margin: 2rem; /* Use rem for consistent spacing relative to root font-size */
+  max-width: 80%; /* Ensure content doesn’t become too wide on large screens */
+}
+
+.left-panel {
+  display: flex;
+  flex-direction: column;
+  max-width: 75%;
+  width: fit-content;
+}
+
+.stock-inputs {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 3em;
+}
+
+input {
+  height: auto;
+  width: 30%;
+  font-size: 3em;
+  padding: 1.5rem 2rem;
+  margin: 10px;
+  border: 2px solid #808080;
+  background-color: rgba(244, 244, 244, 0.961); 
+  border-radius: 9999px;
+  box-sizing: border-box;
+}
+
+input::selection {
+  display: none;
+}
+
+input:last-child {
+  font-size: 2em;
+}
+
+
