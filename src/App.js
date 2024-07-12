@@ -39,9 +39,12 @@ function App() {
                 />
             </div>
             <button onClick={handleCompare}>Compare</button>
-            {stockOneData && stockTwoData &&
-                <ChatGPT stockOneTicker={stockOneData.ticker} stockTwoTicker={stockTwoData.ticker} />
-            }
+            {stockOneData && stockTwoData && (
+                <ChatGPT
+                    stockOneTicker={stockOneData.ticker}
+                    stockTwoTicker={stockTwoData.ticker}
+                />
+            )}
             <Stock stockOneData={stockOneData} stockTwoData={stockTwoData} />
             <Chart stockOneData={stockOneData} stockTwoData={stockTwoData} />
         </div>

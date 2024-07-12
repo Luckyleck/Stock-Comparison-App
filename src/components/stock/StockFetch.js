@@ -26,7 +26,7 @@ const POLYGON_URL = process.env.REACT_APP_POLYGON_URL;
 export const fetchStockData = async (ticker) => {
     const multiplier = 1;
     const timespan = 'month';
-    
+
     const toDate = new Date();
     const fromDate = new Date();
     fromDate.setFullYear(toDate.getFullYear() - 1);
@@ -42,8 +42,8 @@ export const fetchStockData = async (ticker) => {
         throw new Error('Failed to fetch stock data');
     }
     const data = await response.json();
-    data['to'] = to
-    data['from'] = from
-    console.log(data)
+    data['to'] = to;
+    data['from'] = from;
+    console.log(data);
     return data;
 };

@@ -5,11 +5,10 @@ export const ChatGPT = ({ stockOneTicker, stockTwoTicker }) => {
     const [response, setResponse] = useState('');
 
     useEffect(() => {
-        const fetchChatGPTResponse  = async () => {
+        const fetchChatGPTResponse = async () => {
             const prompt = `I'm a risk averse investor with long term investment goals. 
                             What stock to invest 
                             ${stockOneTicker} or ${stockTwoTicker}?`;
-            
 
             try {
                 const result = await fetch(
@@ -26,18 +25,17 @@ export const ChatGPT = ({ stockOneTicker, stockTwoTicker }) => {
                         }),
                     }
                 );
-        
+
                 const data = await result.json();
-                setResponse(data.choices[0].message.content)
+                setResponse(data.choices[0].message.content);
             } catch (error) {
                 console.error('Error fetching data from OpenAI API:', error);
             }
-        }
+        };
         if (stockOneTicker && stockTwoTicker) {
             fetchChatGPTResponse();
         }
-
-    }, [stockOneTicker, stockTwoTicker])
+    }, [stockOneTicker, stockTwoTicker]);
 
     return (
         <div>
@@ -45,7 +43,6 @@ export const ChatGPT = ({ stockOneTicker, stockTwoTicker }) => {
             <p>{response}</p>
         </div>
     );
-
 };
 
 export default ChatGPT;
