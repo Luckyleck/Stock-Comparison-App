@@ -7,6 +7,7 @@ import { ChatGPT } from './components/ChatGPT/ChatGPT';
 import { fetchStockData } from './components/stock/StockFetch';
 import { fetchChatGPT } from './components/ChatGPT/ChatGPTFetch';
 import Chart from './components/Chart/Chart';
+import InvestorInfo from './components/InvestorInfo/InvestorInfo';
 
 function App() {
     const [stockOne, setStockOne] = useState('');
@@ -32,6 +33,7 @@ function App() {
 
     return (
         <div className="main">
+            <InvestorInfo />
             <div className="stockInputs">
                 <input
                     placeholder="Stock 1"
