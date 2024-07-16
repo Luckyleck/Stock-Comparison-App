@@ -8,7 +8,7 @@ export const ChatGPT = ({ stockOneTicker, stockTwoTicker, investorType, investin
         const fetchChatGPTResponse = async () => {
             const prompt = `I'm a ${investorType} investor with ${investingHorizon} investment goals. 
                             What stock to invest 
-                            ${stockOneTicker} or ${stockTwoTicker}?`;
+                            ${stockOneTicker} or ${stockTwoTicker}? Answer should be under 100 words`;
 
             try {
                 const result = await fetch(
@@ -35,9 +35,9 @@ export const ChatGPT = ({ stockOneTicker, stockTwoTicker, investorType, investin
         if (stockOneTicker && stockTwoTicker) {
             fetchChatGPTResponse();
         }
-    }, [stockOneTicker, stockTwoTicker]);
+    // }, [stockOneTicker, stockTwoTicker]);
+}, [stockOneTicker, stockTwoTicker, investorType, investingHorizon]);
 }
-
 
 
 ChatGPT.propTypes = {

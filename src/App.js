@@ -33,6 +33,10 @@ function App() {
         }
     };
 
+    console.log('Investor Type:', investorType);
+    console.log('Investing Horizon:', investingHorizon);
+
+
     return (
         <div className="main">
             <InvestorInfo />
@@ -59,8 +63,8 @@ function App() {
                     investingHorizon={investingHorizon}
                 />
             )}
-            <Stock stockOneData={stockOneData} stockTwoData={stockTwoData} />
             <Chart stockOneData={stockOneData} stockTwoData={stockTwoData} />
+            <Stock stockOneData={stockOneData} stockTwoData={stockTwoData} />
         </div>
     );
 }
