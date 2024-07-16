@@ -1,14 +1,16 @@
-import React, { useState, useEffect } from 'react';
-const ChatGPT_API_KEY = process.env.REACT_APP_ChatGPT_API_KEY;
+import React from 'react';
+import PropTypes from 'prop-types';
 
-export const ChatGPT = ({ stockOneTicker, stockTwoTicker }) => {
+export const ChatGPT = ({ stockOneTicker, stockTwoTicker, investorType, investingHorizon }) => {
     const [response, setResponse] = useState('');
 
     useEffect(() => {
         const fetchChatGPTResponse = async () => {
-            const prompt = `I'm a risk averse investor with long term investment goals. 
+
+            const prompt = `I'm a ${investorType} investor with ${investingHorizon} investment goals. 
                             What stock to invest 
-                            ${stockOneTicker} or ${stockTwoTicker}?`;
+                            ${stockOneTicker} or ${stockTwoTicker}? Answer should be under 100 words`;
+
 
             try {
                 const result = await fetch(
@@ -35,14 +37,15 @@ export const ChatGPT = ({ stockOneTicker, stockTwoTicker }) => {
         if (stockOneTicker && stockTwoTicker) {
             fetchChatGPTResponse();
         }
-    }, [stockOneTicker, stockTwoTicker]);
 
-    return (
-        <div>
-            <h2>ChatGPT Response:</h2>
-            <p>{response}</p>
-        </div>
-    );
+}, [stockOneTicker, stockTwoTicker, investorType, investingHorizon]);
+}
+
+
+ChatGPT.propTypes = {
+    responseGPT: PropTypes.string,
+
 };
+
 
 export default ChatGPT;
