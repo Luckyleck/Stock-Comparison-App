@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export const ChatGPT = ({ stockOneTicker, stockTwoTicker }) => {
+export const ChatGPT = ({ stockOneTicker, stockTwoTicker, investorType, investingHorizon }) => {
     const [response, setResponse] = useState('');
 
     useEffect(() => {
         const fetchChatGPTResponse = async () => {
-            const prompt = `I'm a risk averse investor with long term investment goals. 
+            const prompt = `I'm a ${investorType} investor with ${investingHorizon} investment goals. 
                             What stock to invest 
                             ${stockOneTicker} or ${stockTwoTicker}?`;
 
