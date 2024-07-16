@@ -63,6 +63,7 @@ function App() {
                     investingHorizon={investingHorizon}
                 />
             )}
+
             <Chart stockOneData={stockOneData} stockTwoData={stockTwoData} />
             <Stock stockOneData={stockOneData} stockTwoData={stockTwoData} />
         </div>
