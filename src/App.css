@@ -17,7 +17,7 @@ input, select {
 } */
 
 .main-container {
-  background: linear-gradient(to bottom, #e0f7fa, #8ea9a9); /* Teal to light color gradient */
+  /* background: linear-gradient(to bottom, #e0f7fa, #8ea9a9); Teal to light color gradient */
   min-height: 100vh; /* Ensure it takes up full height */
   overflow-y: auto; /* Enable vertical scrolling */
 }
@@ -32,6 +32,8 @@ input, select {
 .content {
   margin: 2rem; /* Use rem for consistent spacing relative to root font-size */
   max-width: 80%; /* Ensure content doesn’t become too wide on large screens */
+  display: flex;
+  justify-content: space-between;
 }
 
 .left-panel {
