@@ -1,10 +1,12 @@
 // eslint-disable-next-line no-undef
 const ChatGPT_API_KEY = process.env.REACT_APP_ChatGPT_API_KEY;
 
-export const fetchChatGPT = async (ticker1, ticker2) => {
-  const prompt = `I'm a risk averse investor with long term investment goals. 
-                        What stock to invest 
-                        ${ticker1} or ${ticker2}?`;
+export const fetchChatGPT = async (stockOneTicker, stockTwoTicker, investorType, investingHorizon) => {
+
+  const prompt = `I'm a ${investorType} investor with ${investingHorizon} investment goals. 
+                  What stock to invest 
+                  ${stockOneTicker} or ${stockTwoTicker}? Answer should be under 100 words`;
+
   const response = await fetch(
     'https://api.openai.com/v1/chat/completions',
     {

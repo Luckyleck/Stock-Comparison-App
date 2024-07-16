@@ -17,6 +17,7 @@ function App() {
     const [stockTwoData, setStockTwoData] = useState(null);
     const [investorType, setInvestorType] = useState('risk averse');
     const [investingHorizon, setInvestingHorizon] = useState('long-term');
+    const [responseGPT, setResponseGPT] = useState('')
 
     const handleCompare = async () => {
         try {
@@ -25,7 +26,7 @@ function App() {
             const dataTwo = await fetchStockData(stockTwo.toUpperCase());
             setStockTwoData(dataTwo)
 
-            const dataChatGPT = await fetchChatGPT(stockOne, stockTwo);
+            const dataChatGPT = await fetchChatGPT(stockOne, stockTwo, investorType, investingHorizon);
             setResponseGPT(dataChatGPT)
 
         } catch (error) {
@@ -39,7 +40,6 @@ function App() {
 
     return (
         <div className="main">
-            <InvestorInfo />
             <div className="stockInputs">
                 <input
                     placeholder="Stock 1"
@@ -55,15 +55,10 @@ function App() {
             <InvestorInfo onChange={setInvestorType} />
             <InvestingHorizon onChange={setInvestingHorizon} />
             <button onClick={handleCompare}>Compare</button>
-            {stockOneData && stockTwoData && (
-                <ChatGPT
-                    stockOneTicker={stockOneData.ticker}
-                    stockTwoTicker={stockTwoData.ticker}
-                    investorType={investorType}
-                    investingHorizon={investingHorizon}
-                />
-            )}
+            {/* {stockOneData && stockTwoData && (
+            )} */}
 
+            <ChatGPT responseGPT={responseGPT} />
             <Chart stockOneData={stockOneData} stockTwoData={stockTwoData} />
             <Stock stockOneData={stockOneData} stockTwoData={stockTwoData} />
         </div>
