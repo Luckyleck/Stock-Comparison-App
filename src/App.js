@@ -26,26 +26,9 @@ function App() {
 
     return (
         <div className="main-container">
-            <div className="content">
-                <div className="left-panel">
-                    <h1 id="title">.stock-comparison</h1>
-                    <div className="stock-inputs">
-                        <input
-                            placeholder="Stock 1"
-                            value={stockOne}
-                            onChange={(e) => setStockOne(e.target.value)}
-                        />
-                        <input
-                            placeholder="Stock 2"
-                            value={stockTwo}
-                            onChange={(e) => setStockTwo(e.target.value)}
-                        />
-                        <input
-                            placeholder="Investment Style"
-                            value={stockTwo}
-                            onChange={(e) => setStockTwo(e.target.value)}
-                        />
-                    </div>
+            <div className="main-content">
+                <div className="header">
+                    <h1>compare stocks against each other, and let the AI decide which is better to invest</h1>
                 </div>
             </div>
 
