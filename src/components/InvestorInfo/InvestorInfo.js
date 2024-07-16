@@ -1,53 +1,20 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-const InvestorInfo = () => {
-  const [riskPreference, setRiskPreference] = useState('');
+const InvestorInfo = ({ onChange }) => {
+    const handleChange = (e) => {
+        onChange(e.target.value);
+    };
 
-  const handleChange = (event) => {
-      setRiskPreference(event.target.value);
-  };
-
-  return (
-      <div>
-          <h3>Select your risk preference:</h3>
-          <div>
-              <input 
-                  type="radio" 
-                  id="riskAverse" 
-                  name="riskPreference" 
-                  value="Risk Averse" 
-                  onChange={handleChange} 
-              />
-              <label htmlFor="riskAverse">Risk Averse (Risk avoiding)</label>
-          </div>
-
-          <div>
-              <input 
-                  type="radio" 
-                  id="riskNeutral" 
-                  name="riskPreference" 
-                  value="Risk Neutral" 
-                  onChange={handleChange} 
-              />
-              <label htmlFor="riskNeutral">Risk Neutral</label>
-          </div>
-
-          <div>
-              <input 
-                  type="radio" 
-                  id="riskLoving" 
-                  name="riskPreference" 
-                  value="Risk Loving" 
-                  onChange={handleChange} 
-              />
-              <label htmlFor="riskLoving">Risk Loving</label>
-          </div>
-
-          <div>
-              <p>Risk Preference: {riskPreference}</p>
-          </div>
-      </div>
-  );
+    return (
+        <div>
+            <label htmlFor="investorType">investor type:</label>
+            <select id="investorType" onChange={handleChange}>
+                <option value="risk averse">risk averse</option>
+                <option value="risk neutral">risk neutral</option>
+                <option value="risk loving">risk loving</option>
+            </select>
+        </div>
+    );
 };
 
 export default InvestorInfo;

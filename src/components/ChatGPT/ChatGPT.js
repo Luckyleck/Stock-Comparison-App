@@ -1,8 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-<<<<<<< HEAD
-=======
 export const ChatGPT = ({ stockOneTicker, stockTwoTicker }) => {
     const [response, setResponse] = useState('');
 
@@ -38,7 +36,7 @@ export const ChatGPT = ({ stockOneTicker, stockTwoTicker }) => {
             fetchChatGPTResponse();
         }
     }, [stockOneTicker, stockTwoTicker]);
->>>>>>> 2c1ba28 (Format main)
+}
 
 
 
