@@ -9,6 +9,7 @@ import { fetchChatGPT } from './components/ChatGPT/ChatGPTFetch';
 import Chart from './components/Chart/Chart';
 import InvestorInfo from './components/InvestorInfo/InvestorInfo';
 import InvestingHorizon from './components/InvestingHorizon/InvestingHorizon';
+import stockTickers from './assets/company_tickers.json';
 
 function App() {
     const [stockOne, setStockOne] = useState('');
@@ -18,6 +19,7 @@ function App() {
     const [investorType, setInvestorType] = useState('risk averse');
     const [investingHorizon, setInvestingHorizon] = useState('long-term');
     const [responseGPT, setResponseGPT] = useState('');
+    const [autocompleteSuggestions, setAutocompleteSuggestions] = useState([]);
 
     const handleCompare = async () => {
         try {
@@ -38,8 +40,23 @@ function App() {
         }
     };
 
-    console.log('Investor Type:', investorType);
-    console.log('Investing Horizon:', investingHorizon);
+    const handleInputChange = (event) => {
+        const inputValue = event.target.value.toLowerCase();
+        if (inputValue.trim().length === 0) {
+            setAutocompleteSuggestions([]);
+            return;
+        }
+
+        const tickersArray = Object.keys(stockTickers).map(key => stockTickers[key]);
+
+        const filteredSuggestions = tickersArray.filter(
+            (stock) =>
+                stock.title.toLowerCase().includes(inputValue) ||
+                stock.ticker.toLowerCase().includes(inputValue)
+        );
+
+        setAutocompleteSuggestions(filteredSuggestions);
+    };
 
     return (
         <div className="main-container">
@@ -73,16 +90,33 @@ function App() {
                             placeholder="stock"
                             value={stockOne}
                             onChange={(e) => setStockOne(e.target.value)}
+                            onInput={handleInputChange}
                         />
                         <input
                             placeholder="stock"
                             value={stockTwo}
                             onChange={(e) => setStockTwo(e.target.value)}
+                            onInput={handleInputChange}
+                        />
+                    </div>
+                    {/* Autocomplete suggestions */}
+                    {autocompleteSuggestions.length > 0 && (
+                        <ul className="autocomplete-list">
+                            {autocompleteSuggestions.map((stock) => (
+                                <li key={stock.ticker}>
+                                    {stock.ticker} - {stock.title}
+                                </li>
+                            ))}
+                        </ul>
+                    )}
+                    <div className="invest_options">
+                        <InvestorInfo setInvestorType={setInvestorType} />
+                        <InvestingHorizon
+                            setInvestingHorizon={setInvestingHorizon}
                         />
                     </div>
                 </div>
-                <InvestorInfo onChange={setInvestorType} />
-                <InvestingHorizon onChange={setInvestingHorizon} />
+
                 <button onClick={handleCompare}>Compare</button>
                 <ChatGPT responseGPT={responseGPT} />
                 <Chart
