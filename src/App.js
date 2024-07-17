@@ -17,18 +17,22 @@ function App() {
     const [stockTwoData, setStockTwoData] = useState(null);
     const [investorType, setInvestorType] = useState('risk averse');
     const [investingHorizon, setInvestingHorizon] = useState('long-term');
-    const [responseGPT, setResponseGPT] = useState('')
+    const [responseGPT, setResponseGPT] = useState('');
 
     const handleCompare = async () => {
         try {
             const dataOne = await fetchStockData(stockOne.toUpperCase());
-            setStockOneData(dataOne)
+            setStockOneData(dataOne);
             const dataTwo = await fetchStockData(stockTwo.toUpperCase());
-            setStockTwoData(dataTwo)
+            setStockTwoData(dataTwo);
 
-            const dataChatGPT = await fetchChatGPT(stockOne, stockTwo, investorType, investingHorizon);
-            setResponseGPT(dataChatGPT)
-
+            const dataChatGPT = await fetchChatGPT(
+                stockOne,
+                stockTwo,
+                investorType,
+                investingHorizon
+            );
+            setResponseGPT(dataChatGPT);
         } catch (error) {
             console.error('Error fetching stock data:', error);
         }
@@ -36,7 +40,6 @@ function App() {
 
     console.log('Investor Type:', investorType);
     console.log('Investing Horizon:', investingHorizon);
-
 
     return (
         <div className="main-container">
@@ -77,35 +80,20 @@ function App() {
                             onChange={(e) => setStockTwo(e.target.value)}
                         />
                     </div>
-                    <select required>
-                        <option value="" disabled selected hidden>
-                            Investment Profile
-                        </option>
-                        <option value="one">Option One</option>
-                        <option value="two">Option Two</option>
-                        <option value="three">Option Three</option>
-                    </select>
                 </div>
+                <InvestorInfo onChange={setInvestorType} />
+                <InvestingHorizon onChange={setInvestingHorizon} />
+                <button onClick={handleCompare}>Compare</button>
+                <ChatGPT responseGPT={responseGPT} />
+                <Chart
+                    stockOneData={stockOneData}
+                    stockTwoData={stockTwoData}
+                />
+                <Stock
+                    stockOneData={stockOneData}
+                    stockTwoData={stockTwoData}
+                />
             </div>
-
-            {/* <div className="stockInputs">
-                <input
-                    placeholder="Stock 1"
-                    value={stockOne}
-                    onChange={(e) => setStockOne(e.target.value)}
-                />
-                <input
-                    placeholder="Stock 2"
-                    value={stockTwo}
-                    onChange={(e) => setStockTwo(e.target.value)}
-                />
-            </div> */}
-            {/* <InvestorInfo onChange={setInvestorType} />
-            <InvestingHorizon onChange={setInvestingHorizon} />
-            <button onClick={handleCompare}>Compare</button>
-            <ChatGPT responseGPT={responseGPT} />
-            <Chart stockOneData={stockOneData} stockTwoData={stockTwoData} />
-            <Stock stockOneData={stockOneData} stockTwoData={stockTwoData} /> */}
         </div>
     );
 }
