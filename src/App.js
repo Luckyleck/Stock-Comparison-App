@@ -28,7 +28,49 @@ function App() {
         <div className="main-container">
             <div className="main-content">
                 <div className="header">
-                    <h1>compare stocks against each other, and let the AI decide which is better to invest</h1>
+                    <h1 style={{ fontSize: '6em' }}>let AI choose.</h1>
+                    <h1 style={{ fontSize: '3em' }}>
+                        compare stocks and find your best investment
+                    </h1>
+                    <div className="created-by">
+                        <h2>created by alex and olga.</h2>
+                        <div
+                            style={{
+                                display: 'flex',
+                                gap: '20px',
+                                justifyContent: 'center',
+                            }}
+                        >
+                            <a href="https://github.com/luckyleck">
+                                Alex&apos;s Github
+                            </a>
+                            <a href="https://github.com/olga-bessonova">
+                                Olga&apos;s Github
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div className="selection">
+                    <div className="stock-inputs">
+                        <input
+                            placeholder="stock"
+                            value={stockOne}
+                            onChange={(e) => setStockOne(e.target.value)}
+                        />
+                        <input
+                            placeholder="stock"
+                            value={stockTwo}
+                            onChange={(e) => setStockTwo(e.target.value)}
+                        />
+                    </div>
+                    <select required>
+                        <option value="" disabled selected hidden>
+                            Investment Profile
+                        </option>
+                        <option value="one">Option One</option>
+                        <option value="two">Option Two</option>
+                        <option value="three">Option Three</option>
+                    </select>
                 </div>
             </div>
 
@@ -58,4 +100,3 @@ function App() {
 }
 
 export default App;
-
