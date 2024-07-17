@@ -100,12 +100,12 @@ function App() {
                     onChange={(e) => setStockTwo(e.target.value)}
                 />
             </div> */}
-            <InvestorInfo onChange={setInvestorType} />
+            {/* <InvestorInfo onChange={setInvestorType} />
             <InvestingHorizon onChange={setInvestingHorizon} />
             <button onClick={handleCompare}>Compare</button>
             <ChatGPT responseGPT={responseGPT} />
             <Chart stockOneData={stockOneData} stockTwoData={stockTwoData} />
-            <Stock stockOneData={stockOneData} stockTwoData={stockTwoData} />
+            <Stock stockOneData={stockOneData} stockTwoData={stockTwoData} /> */}
         </div>
     );
 }
