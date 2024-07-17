@@ -99,7 +99,7 @@ function App() {
                     value={stockTwo}
                     onChange={(e) => setStockTwo(e.target.value)}
                 />
-            </div>
+            </div> */}
             <InvestorInfo onChange={setInvestorType} />
             <InvestingHorizon onChange={setInvestingHorizon} />
             <button onClick={handleCompare}>Compare</button>
