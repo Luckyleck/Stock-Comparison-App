@@ -103,13 +103,15 @@ function App() {
                     </div>
                     {/* Autocomplete suggestions */}
                     {autocompleteSuggestions.length > 0 && (
-                        <ul className="autocomplete-list">
-                            {autocompleteSuggestions.map((stock) => (
-                                <li key={stock.ticker}>
-                                    {stock.ticker} - {stock.title}
-                                </li>
-                            ))}
-                        </ul>
+                        <div className="suggestions">
+                            <ul className="autocomplete-list">
+                                {autocompleteSuggestions.map((stock) => (
+                                    <li key={stock.ticker}>
+                                        {stock.ticker} - {stock.title}
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
                     )}
                     <div className="invest_options">
                         <InvestorInfo setInvestorType={setInvestorType} />

@@ -80,11 +80,15 @@ body {
   margin-top: 10px;
 }
 
+.suggestions {
+  background-color: beige;
+  width: 100%;
+}
+
 @media (max-width: 1000px) {
   .main-content {
     min-width: 100%;
   }
-
 }
 
 

@@ -9,7 +9,7 @@ const InvestingHorizon = ({ setInvestingHorizon }) => {
     return (
         <select onChange={handleChange}>
             <option value="" disabled selected hidden>
-                investing Horizon
+                investing horizon
             </option>
             <option value="short-term">short-term</option>
             <option value="long-term">long-term</option>
