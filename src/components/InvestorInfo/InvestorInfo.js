@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
 
 const InvestorInfo = ({ setInvestorType }) => {
     const handleChange = (e) => {
@@ -18,9 +18,8 @@ const InvestorInfo = ({ setInvestorType }) => {
     );
 };
 
-
 InvestorInfo.propTypes = {
-    setInvestorType: PropTypes.func
+    setInvestorType: PropTypes.func,
 };
 
 export default InvestorInfo;

@@ -47,7 +47,9 @@ function App() {
             return;
         }
 
-        const tickersArray = Object.keys(stockTickers).map(key => stockTickers[key]);
+        const tickersArray = Object.keys(stockTickers).map(
+            (key) => stockTickers[key]
+        );
 
         const filteredSuggestions = tickersArray.filter(
             (stock) =>
