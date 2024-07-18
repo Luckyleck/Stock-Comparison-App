@@ -1,20 +1,25 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const InvestorInfo = ({ onChange }) => {
+const InvestorInfo = ({ setInvestorType }) => {
     const handleChange = (e) => {
-        onChange(e.target.value);
+        setInvestorType(e.target.value);
     };
 
     return (
-        <div>
-            <label htmlFor="investorType">investor type:</label>
-            <select id="investorType" onChange={handleChange}>
-                <option value="risk averse">risk averse</option>
-                <option value="risk neutral">risk neutral</option>
-                <option value="risk loving">risk loving</option>
-            </select>
-        </div>
+        <select onChange={handleChange} defaultValue="">
+            <option value="" disabled selected hidden>
+                investor type
+            </option>
+            <option value="risk averse">risk averse</option>
+            <option value="risk neutral">risk neutral</option>
+            <option value="risk loving">risk loving</option>
+        </select>
     );
+};
+
+InvestorInfo.propTypes = {
+    setInvestorType: PropTypes.func,
 };
 
 export default InvestorInfo;

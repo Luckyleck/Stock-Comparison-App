@@ -1,19 +1,24 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const InvestingHorizon = ({ onChange }) => {
+const InvestingHorizon = ({ setInvestingHorizon }) => {
     const handleChange = (e) => {
-        onChange(e.target.value);
+        setInvestingHorizon(e.target.value);
     };
 
     return (
-        <div>
-            <label htmlFor="investingHorizon">investing horizon:</label>
-            <select id="investingHorizon" onChange={handleChange}>
-                <option value="short-term">short-term</option>
-                <option value="long-term">long-term</option>
-            </select>
-        </div>
+        <select onChange={handleChange}>
+            <option value="" disabled selected hidden>
+                investing horizon
+            </option>
+            <option value="short-term">short-term</option>
+            <option value="long-term">long-term</option>
+        </select>
     );
+};
+
+InvestingHorizon.propTypes = {
+    setInvestingHorizon: PropTypes.func,
 };
 
 export default InvestingHorizon;
