@@ -8,6 +8,8 @@ import Chart from './components/Chart/Chart';
 import InvestorInfo from './components/InvestorInfo/InvestorInfo';
 import InvestingHorizon from './components/InvestingHorizon/InvestingHorizon';
 import stockTickers from './assets/company_tickers.json';
+import alexPhoto from './assets/photo/Alex.jpeg';
+import olgaPhoto from './assets/photo/Olga.jpeg';
 
 function App() {
     const [stockOne, setStockOne] = useState('');
@@ -122,23 +124,7 @@ function App() {
                     <h1 style={{ fontSize: '3em' }}>
                         compare stocks and find your best investment
                     </h1>
-                    <div className="created-by">
-                        <h2>created by alex and olga.</h2>
-                        <div
-                            style={{
-                                display: 'flex',
-                                gap: '20px',
-                                justifyContent: 'center',
-                            }}
-                        >
-                            <a href="https://github.com/luckyleck">
-                                Alex&apos;s Github
-                            </a>
-                            <a href="https://github.com/olga-bessonova">
-                                Olga&apos;s Github
-                            </a>
-                        </div>
-                    </div>
+
                 </div>
                 <div className="selection">
                     <div className="stock-inputs">
@@ -198,6 +184,26 @@ function App() {
                     stockOneData={stockOneData}
                     stockTwoData={stockTwoData}
                 />
+
+                <footer>
+                    <div className="created-by">
+                        <h2>Created by Alex Lecky and Olga Bessonova</h2>
+                        <div className="creators">
+                            <div className="creator">
+                                <a href="https://github.com/luckyleck">
+                                    <img src={alexPhoto} alt="Alex Lecky" />
+                                    <p>Alex Lecky</p>                                    
+                                </a>
+                            </div>                            
+                            <div className="creator">
+                                <a href="https://github.com/olga-bessonova">
+                                    <img src={olgaPhoto} alt="Olga Bessonova" />
+                                    <p>Olga Bessonova</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
             </div>
         </div>
     );
