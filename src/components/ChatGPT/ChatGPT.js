@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 export const ChatGPT = ({ responseGPT }) => {
     return (
-        <div>
+        <div style={{ maxWidth: '70%' }}>
             <p>{responseGPT}</p>
         </div>
     );
