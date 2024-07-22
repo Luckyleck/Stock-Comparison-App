@@ -8,7 +8,6 @@ const Footer = () => {
   return (
     <footer>
       <div className="created-by">
-          <h2>Created by Alex Lecky and Olga Bessonova</h2>
           <div className="creators">
               <div className="creator">
                   <a href="https://github.com/luckyleck">

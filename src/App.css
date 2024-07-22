@@ -2,6 +2,16 @@ body {
   font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
 }
 
+:root {
+  --purple_color: #2B3A67;
+  --gold_color: #FCFC62;
+  --blue_color: #2389DA;
+  --lightblue_color: #34E5FF;
+  --grey_color: #c6d8d3;
+
+  --border_radius: 15px;
+}
+
 .main-container {
   display: flex;
   justify-content: center;
@@ -16,40 +26,30 @@ body {
   min-width: 70%;
   max-width: 70%;
   min-height: 100%;
-  background-color: rgb(246, 246, 246)
+  background-color: var(--grey_color);
+
 }
 
 .selection {
-  margin-top: 2em;
-  width: fit-content;
-  padding: 10px;
+  /* margin-top: 2em; */
+  /* width: fit-content; */
+  /* padding: 10px; */
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: space-evenly;
+  /* flex-direction: space-between; */
+  flex-direction: row;
+  /* align-items: center; */
 
 }
 
-.stock-inputs {
+.selection {
   display: flex;
-  justify-content: space-between;
-  min-width: 100%;
-  gap: 80px;
+  justify-content: space-between; /* or space-around, space-evenly */
+  flex-direction: row; /* Ensures the inputs are in a row */
 }
 
-.stock-inputs input {
-  height: 2em;
-  font-size: 2em;
-  box-sizing: border-box;
-  text-align: center;
-  width: 8em;
-}
-
-.stock-inputs input::placeholder {
-  text-align: center;
-}
-
-.stock-inputs input:focus::placeholder {
-  color: transparent;
+.selection > .stock-input {
+  margin: 0 30px; /* Adds horizontal margin between the inputs */
 }
 
 .invest_options {

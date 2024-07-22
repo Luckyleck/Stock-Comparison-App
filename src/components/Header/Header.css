@@ -1,8 +1,43 @@
 .header {
-  /* align-self: flex-start */
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
+}
+
+.top-section {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  align-items: center;
+}
+
+.text {
+  flex: 1;
+}
+
+#header-image {
+  max-width: 50%;
+  height: auto;
+}
+
+.bottom-text {
+  width: 70%;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.bottom-text p {
+  font-size: 1.5em;
+}
+
+.header h1 {
+  margin: 5px;
+}
+
+.header span {
+  background-color: var(--gold_color);
+  padding: 2px 10px;
+  border-radius: var(--border_radius);
 }

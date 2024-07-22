@@ -27,7 +27,6 @@ function App() {
             <div className="main-content">
                 <Header />
                 <div className="selection">
-                    <div className="stock-inputs">
                         <StockInput
                             stock={stockOne}
                             setStock={setStockOne}
@@ -38,12 +37,11 @@ function App() {
                             setStock={setStockTwo}
                             name="stockTwo"
                         />
-                    </div>
+                </div>
                     <div className="invest_options">
                         <InvestorInfo setInvestorType={setInvestorType} />
                         <InvestingHorizon setInvestingHorizon={setInvestingHorizon} />
                     </div>
-                </div>
 
                 <button onClick={handleCompareClick}>Compare</button>
                 <ChatGPT responseGPT={responseGPT} />

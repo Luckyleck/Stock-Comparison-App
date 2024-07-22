@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import useAutocomplete from './useAutocomplete';
 import useScroll from './useScroll';
+import './StockInput.css' 
 
 const StockInput = ({ stock, setStock, name }) => {
     const { displayedSuggestions, handleInputChange, handleSuggestionClick, loadMoreSuggestions, hasMore } = useAutocomplete(stock, setStock);
@@ -16,8 +17,8 @@ const StockInput = ({ stock, setStock, name }) => {
     };
 
     return (
-        <div>
-            <input name={name} placeholder="stock" value={stock} onChange={handleInputChange} />
+        <div className='stock_inputs_container'>
+            <input className='stock_input' name={name} placeholder="stock" value={stock} onChange={handleInputChange} />
             {displayedSuggestions.length > 0 && (
                 <div className="suggestions" onScroll={handleScroll} ref={suggestionsRef}>
                     <ul className="autocomplete-list">
